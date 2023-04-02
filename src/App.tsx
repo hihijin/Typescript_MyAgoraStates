@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { useState } from 'react';
+
+import Discussions from './Components/Discussions';
+import Form from './Components/Form';
+import Header from './Components/Header';
+import { agoraStatesDiscussions } from './Data';
+
+const App = () => {
+	const [discussionData, setDiscussionData] = useState([...agoraStatesDiscussions]);
+
+	const handleSubmitClick = (newSingleData: any): void => {
+		setDiscussionData([newSingleData, ...discussionData]);
+	};
+	return (
+		<main>
+			<Header />
+			<Form handleSubmitClick={handleSubmitClick} />
+			<Discussions discussionData={discussionData} />
+		</main>
+	);
+};
 
 export default App;
+
