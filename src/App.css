@@ -1,5 +1,5 @@
-/* TODO: 보기 좋은 나만의 아고라 스테이츠를 위해서 CSS를 수정하세요. */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@900&family=Gaegu:wght@700&family=Lato&family=Lobster&family=Merriweather:wght@900&family=Nanum+Myeongjo&family=Ubuntu&display=swap');
 
 :root {
 	/* color */
@@ -32,21 +32,22 @@ li {
 }
 a {
 	text-decoration: none;
-	color: var(--black-high-em);
+	color: #313132;
 }
 button {
 	background: none;
 	border: 0 none;
 }
 
-/* style */
+
 body {
 	display: flex;
 	justify-content: center;
 	padding: 48px 0;
 	font-family: "Noto Sans KR", sans-serif;
 	font-weight: 400;
-	background-color: var(--gray);
+	background-color: rgba(0,0,0,0.05);
+	overflow-x: hidden;
 }
 main {
 	width: 540px;
@@ -54,34 +55,28 @@ main {
 	box-shadow: var(--shadow-card);
 	overflow: hidden;
 }
-/* 제목 */
-.app_bar {
-	width: 100%;
-	padding: 0 4px;
-	background-color: var(--purple-700);
-	text-align: right;
-}
-.app_bar .material-icons {
-	line-height: 24px;
-	font-size: 16px;
-	color: var(--purple-200);
-}
-h1 {
+
+/*header*/
+h1{
+	font-family: 'Lobster', cursive;
 	width: 100%;
 	height: 56px;
 	text-align: center;
 	line-height: 52px;
-	background-color: var(--purple-500);
-	color: var(--white);
+	background-color: #313132;
+	color:white;
 	font-size: 24px;
 	box-shadow: var(--shadow-card);
 }
+
+/*newDiscussion*/
 h2 {
 	margin: 8px 0;
-	font-size: 20px;
-	font-weight: 500;
-	color: var(--purple-500);
+	font-size: 25px;
+	font-weight: bold;
+	color: #313132;
 }
+
 /* 질문 영역 */
 .form__container {
 	padding: 32px 16px;
@@ -107,36 +102,42 @@ button {
 	font-size: 16px;
 	color: var(--black);
 }
-input[type="submit"] {
-	width: auto;
-	margin-left: auto;
-	background-color: var(--purple-500);
-	border: 0 none;
-	color: var(--white);
-	box-shadow: var(--shadow-btn);
-	letter-spacing: 2px;
-}
+
 textarea {
 	height: 96px;
 	padding: 16px;
 	resize: none;
 }
+input:focus,
+textarea:focus{
+	outline:none;
+	border: 3px solid rgba(0,113,227,1);
+}
+
+/*submit버튼*/
 .form__submit {
 	margin-top: 16px;
 }
 .form__submit button {
-	width: auto;
-	margin-left: auto;
-	background-color: var(--purple-500);
-	border: 0 none;
-	color: var(--white);
+	background-color: rgba(0,113,227,1);
+	border: none;
+	color: white;
 	box-shadow: var(--shadow-btn);
-	letter-spacing: 2px;
 	font-weight: 500;
 }
+.form__submit button:hover{
+    cursor: pointer;
+    background-color: rgba(0,113,227,0.8);
+}
+
+
 /* 질문 목록 영역 */
-.discussion__wrapper {
-	padding: 16px 0;
+.clickDown:hover{
+	cursor: pointer;
+	border: 3px solid #313132;
+}
+.discussions__wrapper {
+	width:100px;
 }
 .discussion__wrapper h2 {
 	padding: 0 16px;
@@ -173,6 +174,7 @@ textarea {
 	font-weight: 500;
 }
 .discussion__information {
+	width: 100%;
 	line-height: 20px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -180,21 +182,30 @@ textarea {
 	font-size: 12px;
 	font-weight: 300;
 	color: var(--black-med-em);
+	display: flex;
+	align-items: baseline;
 }
+.deleteBtn{
+	font-size: 9px;
+	width:30px;
+	height: 20px;
+	padding: 0;
+	margin: 0px;
+	margin-left: 5px;
+}
+.deleteBtn:hover{
+	cursor: pointer;
+}
+
 .discussion__answered {
 	flex-shrink: 0;
 	width: 24px;
 	height: 24px;
 	margin-left: auto;
 	line-height: 24px;
+	
 }
-.material-icons.disChecked {
-	font-size: 24px;
-	color: var(--black-disabled);
-}
-.material-icons.checked {
-	color: var(--purple-500);
-}
+
 /* 페이지네이션 */
 .pagination {
 	display: flex;
@@ -217,27 +228,8 @@ textarea {
 	background-color: var(--purple-500);
 	color: var(--white);
 }
-/* top button */
-.top_button {
-	position: fixed;
-	bottom: -56px;
-	right: calc((100% - 540px) / 2 + 16px);
-	font-family: "Noto Sans KR";
-	display: block;
-	width: 56px;
-	height: 56px;
-	background: var(--black-high-em);
-	color: var(--white);
-	font-weight: 500;
-	border-radius: 50%;
-	box-shadow: var(--shadow-btn-float);
-	opacity: 0;
-	transition: all 0.3s;
-}
-.top_button.show {
-	opacity: 1;
-	bottom: 64px;
-}
+
+
 
 @media screen and (max-width: 600px) {
 	body {
@@ -246,8 +238,51 @@ textarea {
 	main {
 		width: 100%;
 	}
-	.top_button {
-		right: 16px;
-		bottom: 16px;
+}
+
+/*첫화면 로고띄우기*/
+@keyframes hideSplashScreen{
+	0%{
+		opacity: 1;
+		
 	}
+	25%{
+		opacity: 1;
+	}
+	50%{
+	  opacity: 1;
+	}
+	75%{
+	  opacity: 1;
+	}
+	100%{
+	  opacity: 0;
+		visibility: hidden;
+	}
+  }
+  .splash-screen{
+	background-color: #313132;
+	color:#d6d6d6;
+	text-align: center;
+	padding-top: 300px;
+	position: absolute;
+	top:0;
+	left:0;
+	z-index: 99;
+	height: 100vh;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	font-size: 70px;
+	font-family: 'Lobster', cursive;
+	animation: hideSplashScreen 1s ease-in-out forwards;
+  }
+
+.hidden{
+	height: 0px;
+	visibility: hidden;
+}
+
+.paddingLeft{
+	padding-left: 17px;
 }
