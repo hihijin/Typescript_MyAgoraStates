@@ -60,7 +60,7 @@ const DiscussionsRender: React.FC<DiscussionData> = props => {
 			<ul className="discussions__container hidden">
 					{props.discussionData.map((el) => SingleDiscussionRender(el))}{/*li태그로 discussion을 하나씩 만들 컴포넌트*/}
 			</ul>
-			<div className="pagination"></div>
+			<div className="pagination">1 2 3 4 5</div>
 		</section>
 	);
 };

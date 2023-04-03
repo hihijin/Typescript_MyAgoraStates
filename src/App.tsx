@@ -7,7 +7,6 @@ import React, {
 
 import DiscussionsRender from './Components/DiscussionsRender';
 import Form from './Components/Form';
-import Header from './Components/Header';
 import { agoraStatesDiscussions } from './Data';
 import {
   Discussion,
@@ -28,6 +27,8 @@ const App = () => {
 	const handleSubmitClick = (newSingleData: Discussion): void => {
 		setDiscussionData([newSingleData, ...discussionData]);
 	};
+
+	//삭제클릭한 discussion의 id와 동일한 id를 가진 discussion을 discussion목록에서 지운다.
 	const handleDeleteClick = (discussionId: string) => {
 		setDiscussionData(discussion => {
 		  return discussion.filter(discussion => discussion.id !== discussionId);
@@ -35,12 +36,17 @@ const App = () => {
 	  };
 
 	return (
+		<div className='container'>
+			<div><img className='cloud1' alt="" src="/images/cloud.png"/></div>
+			<div><img className='cloud2' alt="" src="/images/cloud.png"/></div>
+			<div><img className='cloud3' alt="" src="/images/cloud.png"/></div>
 		<main>
-			<div className="splash-screen">My Agora States</div>
-			<Header />
-			<Form handleSubmitClick={handleSubmitClick} />
-			<DiscussionsRender discussionData={discussionData} handleDeleteClick={handleDeleteClick}/>
+			<div className="splash-screen">My Agora States</div>{/*첫화면 로고 띄우는 컴포넌트*/}
+			<h1>My Agora States</h1>{/*header 컴포넌트*/}
+			<Form handleSubmitClick={handleSubmitClick} />{/*질문하기 컴포넌트*/}
+			<DiscussionsRender discussionData={discussionData} handleDeleteClick={handleDeleteClick}/>{/*Q&A 컴포넌트*/}
 		</main>
+		</div>
 	);
 };
 

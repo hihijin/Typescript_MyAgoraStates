@@ -16,6 +16,8 @@ interface DiscussionData {
 	imgSrc: string,
 	answer?: object | null,
 	Delete?: (discussionId: string) => void;
+	//discussion삭제하는 이벤트핸들러함수
+	//내 질문은 imgSrc를 전부 하나로 지정해놨으므로, 지정한 url를 가졌다면 삭제함수를 가진 삭제버튼을 렌더링
   };
 
 
@@ -48,5 +50,3 @@ const SingleDiscussion: React.FC<DiscussionData> = props => {
 };
 
 export default SingleDiscussion;
-//AiOutlineCheckCircle
-//AiFillCheckCircle

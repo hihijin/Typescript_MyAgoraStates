@@ -1,26 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@900&family=Gaegu:wght@700&family=Lato&family=Lobster&family=Merriweather:wght@900&family=Nanum+Myeongjo&family=Ubuntu&display=swap');
 
-:root {
-	/* color */
-	--white: #ffffff;
-	--black: #000000;
-	--gray: #e5e5e5;
-	--gray-line: #dddddd;
-	--black-high-em: #212121;
-	--black-med-em: #666666;
-	--black-disabled: #9e9e9e;
-	--purple-100: #d4bff9;
-	--purple-200: #bb86fc;
-	--purple-500: #6200ee;
-	--purple-700: #3700b3;
-	/* boxShadow */
-	--shadow-btn: 0px 3px 6px rgb(0 0 0 / 16%);
-	--shadow-btn-float: 0 10px 20px rgba(0, 0, 0, 0.19),
-		0 6px 6px rgba(0, 0, 0, 0.23);
-	--shadow-card: 0 10px 20px rgba(0, 0, 0, 0.19);
-}
-
 /* reset */
 * {
 	padding: 0;
@@ -49,10 +29,54 @@ body {
 	background-color: rgba(0,0,0,0.05);
 	overflow-x: hidden;
 }
+.cloud1{
+	position:fixed;
+	top:50px;
+	left:-100px;
+	animation: cloud1 27s ease-in-out infinite;
+	z-index: -1;
+	width:130px;
+}
+.cloud2{
+	position:fixed;
+  	top:500px;
+ 	right:-200px;
+ 	animation:cloud2 30s ease-in-out infinite;
+	animation-delay: 2s;
+ 	z-index: -1;
+    width:180px;
+}
+.cloud3{
+	position:fixed;
+	top:800px;
+	left:-200px;
+	animation: cloud1 30s ease-in-out infinite;
+	animation-delay: 5s;
+	z-index: -1;
+	width:150px;
+}
+@keyframes cloud1{
+	0%{
+	  transform : translateX(-50px);
+	}
+	100%{
+	  transform : translateX(2300px);
+	}
+  }
+  @keyframes cloud2{
+	0%{
+	  transform : translateX(50px);
+	}
+	100%{
+	  transform : translateX(-2300px);
+	}
+  }
+
+
 main {
 	width: 540px;
-	background: var(--white);
-	box-shadow: var(--shadow-card);
+	background: white;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
 	overflow: hidden;
 }
 
@@ -66,7 +90,7 @@ h1{
 	background-color: #313132;
 	color:white;
 	font-size: 24px;
-	box-shadow: var(--shadow-card);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
 }
 
 /*newDiscussion*/
@@ -86,7 +110,7 @@ label {
 	margin-top: 12px;
 	font-size: 12px;
 	font-weight: 400;
-	color: var(--black-med-em);
+	color: #666666;
 }
 input,
 textarea,
@@ -97,10 +121,10 @@ button {
 	padding: 0 16px;
 	margin-top: 8px;
 	border-radius: 4px;
-	border: 1px solid var(--gray-line);
+	border: 1px solid #dddddd;
 	font-family: "Noto Sans KR";
 	font-size: 16px;
-	color: var(--black);
+	color: black;
 }
 
 textarea {
@@ -122,7 +146,7 @@ textarea:focus{
 	background-color: rgba(0,113,227,1);
 	border: none;
 	color: white;
-	box-shadow: var(--shadow-btn);
+	box-shadow: 0px 3px 6px rgb(0 0 0 / 16%);
 	font-weight: 500;
 }
 .form__submit button:hover{
@@ -136,9 +160,11 @@ textarea:focus{
 	cursor: pointer;
 	border: 3px solid #313132;
 }
+/*ul*/
 .discussions__wrapper {
 	width:100px;
 }
+/*li*/
 .discussion__wrapper h2 {
 	padding: 0 16px;
 }
@@ -146,7 +172,7 @@ textarea:focus{
 	display: flex;
 	align-items: center;
 	padding: 16px;
-	border-bottom: 1px solid var(--gray-line);
+	border-bottom: 1px solid #dddddd;
 }
 .discussion__avatar--wrapper {
 	flex-shrink: 0;
@@ -155,7 +181,7 @@ textarea:focus{
 	margin-right: 16px;
 	border-radius: 50%;
 	overflow: hidden;
-	background-color: var(--black-disabled);
+	background-color: #9e9e9e;
 }
 .discussion__avatar--wrapper > img {
 	width: 100%;
@@ -181,7 +207,7 @@ textarea:focus{
 	overflow: hidden;
 	font-size: 12px;
 	font-weight: 300;
-	color: var(--black-med-em);
+	color: #666666;
 	display: flex;
 	align-items: baseline;
 }
@@ -195,6 +221,8 @@ textarea:focus{
 }
 .deleteBtn:hover{
 	cursor: pointer;
+	background-color: #313132;
+	color:white;
 }
 
 .discussion__answered {
@@ -222,23 +250,13 @@ textarea:focus{
 	border-radius: 4px;
 }
 .pagination > button:hover {
-	background-color: var(--purple-100);
+	background-color: rgba(0,113,227,0.8);
 }
 .pagination > button.active {
-	background-color: var(--purple-500);
-	color: var(--white);
+	background-color: rgba(0,113,227,1);
+	color: white;
 }
 
-
-
-@media screen and (max-width: 600px) {
-	body {
-		padding: 0;
-	}
-	main {
-		width: 100%;
-	}
-}
 
 /*첫화면 로고띄우기*/
 @keyframes hideSplashScreen{
@@ -278,11 +296,13 @@ textarea:focus{
 	animation: hideSplashScreen 1s ease-in-out forwards;
   }
 
+/*질문 보기를 클릭하면 사라지고 닫기를 클릭해서 추가되는 클래스*/
 .hidden{
 	height: 0px;
 	visibility: hidden;
 }
 
+/*질문보기/닫기를 클릭하면 body padding이 줄어듦으로 추가하는 클래스*/
 .paddingLeft{
 	padding-left: 17px;
 }
